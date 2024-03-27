@@ -1,0 +1,33 @@
+package ProjectCFDP;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class GenerateIntoFiles {
+    
+    public static void main(String[] args) {
+        String DatosProductos = "C:\\Users\\Carolina\\OneDrive\\Escritorio\\DatosProductos_1.txt";
+        String DatosVendedores = "C:\\Users\\Carolina\\OneDrive\\Escritorio\\DatosVendedores_1.txt";
+        
+        readAndPrintTextFile(DatosProductos);
+        System.out.println("\n------------------------\n");
+        readAndPrintTextFile(DatosVendedores);
+    }
+    
+    public static void readAndPrintTextFile(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            
+            System.out.println("Contenido de " + filename + ":");
+            System.out.println("--------------------------");
+            
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+            
+        } catch (IOException e) {
+            System.err.println("Hubo un error con el archivo " + filename + ": " + e.getMessage());
+        }
+    }
+}
